@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>kivi</title>
+    <link rel="stylesheet" href="css/app.css" />
+    <style>
+      .kiwi-bird svg { image-rendering: auto; shape-rendering: auto; }
+    </style>
+  </head>
+  <body>
+    <div class="app" data-theme="night" data-scene="bridge">
+      <aside class="rail">
+        <button class="brand" data-view="home" type="button">kivi</button>
+        <nav class="nav primary">
+          <button class="nav-item active" data-view="home">
+            <span class="icon bird-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><ellipse cx="10" cy="13" rx="7" ry="5.5" fill="currentColor" stroke="none"/><path d="M16.5 13h6l-6 2z" fill="currentColor" stroke="none"/><circle cx="14" cy="11" r="0.8" fill="#0b0d0b" stroke="none"/></svg>
+            </span>
+            home
+          </button>
+          <button class="nav-item" data-view="dictate">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4M8 21h8"/></svg>
+            </span>
+            dictate
+          </button>
+          <button class="nav-item" data-view="kivi">
+            <span class="icon waves-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 10v4M8 7v10M12 4v16M16 7v10M20 10v4"/></svg>
+            </span>
+            hey kivi
+          </button>
+          <button class="nav-item" data-view="history">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M5 7h14M5 12h14M5 17h14"/></svg>
+            </span>
+            chat history
+          </button>
+        </nav>
+        <p class="section-label">your space</p>
+        <nav class="nav">
+          <button class="nav-item" data-view="done">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M7 3h10a2 2 0 0 1 2 2v16l-3-2-3 2-3-2-3 2V5a2 2 0 0 1 2-2z"/><path d="m8.5 12 2.2 2.2 4.8-5"/></svg>
+            </span>
+            completed tasks
+          </button>
+          <button class="nav-item" data-view="doing">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M7 3h10a2 2 0 0 1 2 2v16l-3-2-3 2-3-2-3 2V5a2 2 0 0 1 2-2z"/><path d="M9 12h.01M12 12h.01M15 12h.01"/></svg>
+            </span>
+            ongoing tasks
+          </button>
+          <button class="nav-item" data-view="shortcuts">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M9 6h.01M15 6h.01M9 12h6M6 18h12"/><rect x="4" y="4" width="16" height="16" rx="3"/></svg>
+            </span>
+            shortcuts
+          </button>
+          <button class="nav-item" data-view="styles">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg>
+            </span>
+            styles
+          </button>
+        </nav>
+        <p class="section-label">kivi's memory</p>
+        <nav class="nav">
+          <button class="nav-item" data-view="memory">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 3 1.5 4.5 2.5 6 .6.9 1 1.5 1 2.5h7c0-1 .4-1.6 1-2.5 1-1.5 2.5-3 2.5-6a7 7 0 0 0-7-7z"/><path d="M9.5 21h5"/></svg>
+            </span>
+            memory
+          </button>
+          <button class="nav-item" data-view="corpus">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 9h16M9 9v11"/></svg>
+            </span>
+            dev corpus
+          </button>
+        </nav>
+        <div class="rail-foot">
+          <div class="avatar">S</div>
+          <div>
+            <div class="who">Sharanya</div>
+            <div class="hint">local only</div>
+          </div>
+        </div>
+      </aside>
+
+      <section class="stage">
+        <div class="view" id="view-home">
+          <h1 class="home-line"><em>still</em> hours.</h1>
+          <p class="subtle">a slow green bird · nothing to do yet</p>
+          <div class="yard" id="yard">
+            <canvas id="home-scene" width="160" height="220" aria-hidden="true" style="image-rendering:auto"></canvas>
+            <button type="button" class="kiwi-bird" id="kiwi-bird" aria-label="cute round green bird">
+              <svg viewBox="0 0 80 72" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">
+                <!-- soft shadow -->
+                <ellipse cx="36" cy="68" rx="18" ry="4" fill="rgba(0,0,0,0.10)"/>
+                <!-- body -->
+                <ellipse cx="34" cy="38" rx="22" ry="20" fill="#5ab840"/>
+                <!-- belly highlight -->
+                <ellipse cx="30" cy="42" rx="12" ry="10" fill="#72cc52" opacity="0.45"/>
+                <!-- head -->
+                <circle cx="44" cy="20" r="14" fill="#5ab840"/>
+                <!-- head highlight -->
+                <circle cx="40" cy="16" r="6" fill="#72cc52" opacity="0.35"/>
+                <!-- eye white -->
+                <circle cx="49" cy="18" r="4.5" fill="white"/>
+                <!-- pupil -->
+                <circle cx="50" cy="18" r="2.8" fill="#1a2a10"/>
+                <!-- eye shine -->
+                <circle cx="51.2" cy="16.5" r="1" fill="white"/>
+                <!-- beak -->
+                <path d="M56 20 Q70 24 72 28 Q68 26 56 24 Z" fill="#c8a040" stroke="#a07828" stroke-width="0.4"/>
+                <!-- left leg -->
+                <rect x="24" y="56" width="4" height="10" rx="2" fill="#c8a040"/>
+                <rect x="18" y="64" width="7" height="2.5" rx="1.2" fill="#c8a040"/>
+                <!-- right leg -->
+                <rect x="36" y="56" width="4" height="10" rx="2" fill="#c8a040"/>
+                <rect x="30" y="64" width="7" height="2.5" rx="1.2" fill="#c8a040"/>
+                <!-- wing -->
+                <ellipse cx="18" cy="40" rx="7" ry="5" fill="#4a9c30" opacity="0.7"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="view hidden" id="view-dictate">
+          <header class="greeting">
+            <h1 id="greeting-line"><em>night</em> owl hours — keep it low.</h1>
+          </header>
+          <article class="take-card" id="latest-card">
+            <div class="card-kicker">latest take</div>
+            <p class="take-body" id="latest-body">Press talk, or type a thought below.</p>
+            <div class="card-foot">
+              <time id="latest-time"></time>
+              <span class="talk-hint">press <kbd>Ctrl</kbd> + <kbd>Win</kbd> anywhere to talk</span>
+            </div>
+          </article>
+          <form class="composer" id="composer">
+            <textarea id="take-input" rows="2" placeholder="or write it by hand…"></textarea>
+            <div class="composer-row">
+              <input id="tag-input" type="text" placeholder="tags: quiet, idea" />
+              <button type="button" class="btn ghost" id="talk-btn">talk</button>
+              <button type="submit" class="btn">keep</button>
+            </div>
+            <p class="rec-status" id="rec-status" hidden>listening…</p>
+          </form>
+          <div class="recent-head">
+            <div>
+              <div class="card-kicker">recent takes</div>
+              <p class="subtle" id="today-count">0 takes today</p>
+            </div>
+            <button class="linkish" data-view="history">all takes →</button>
+          </div>
+          <ul class="recent-list" id="recent-list"></ul>
+        </div>
+
+        <div class="view hidden" id="view-kivi">
+          <header class="greeting">
+            <h1><em>hey</em> kivi</h1>
+          </header>
+          <p class="subtle">speak, or type below · Kivi says when it's guessing and asks when it isn't sure</p>
+          <div class="wave-stage" id="wave-stage">
+            <div class="wave-bars" id="wave-bars"></div>
+            <button type="button" class="btn" id="kivi-btn">listen</button>
+          </div>
+          <p class="kivi-live" id="kivi-live"></p>
+          <form class="kivi-text-row" id="kivi-text-form">
+            <input id="kivi-text-input" type="text" placeholder='try: "find the dictation from around 5pm yesterday and polish it for the meeting"' />
+            <button type="submit" class="btn ghost">send</button>
+          </form>
+          <ul class="kivi-log" id="kivi-log"></ul>
+        </div>
+
+        <div class="view hidden" id="view-memory">
+          <header class="greeting">
+            <h1><em>kivi's</em> memory</h1>
+          </header>
+          <p class="subtle">everything below is exactly what Kivi has kept, why, and where it came from. delete anything, anytime.</p>
+          <div class="stat-row" id="mem-stats"></div>
+
+          <p class="mem-section-title">tone, per audience — learned only after a correction repeats</p>
+          <ul class="mem-list" id="mem-tone-list"></ul>
+
+          <p class="mem-section-title">glossary — names & terms taught explicitly</p>
+          <ul class="mem-list" id="mem-glossary-list"></ul>
+          <form class="teach-form" id="teach-form">
+            <input id="teach-term" type="text" placeholder="term Kivi mishears, e.g. Saaras" />
+            <input id="teach-canonical" type="text" placeholder="correct form" />
+            <button type="submit" class="btn ghost">teach it</button>
+          </form>
+
+          <p class="mem-section-title">noticed in dictation, not learned — never acted on until it repeats or you confirm</p>
+          <div class="candidate-chip-row" id="mem-candidates"></div>
+
+          <p class="mem-section-title">recent decisions — full trace of what Hey Kivi did and why</p>
+          <ul class="dec-list" id="dec-list"></ul>
+        </div>
+
+        <div class="view hidden" id="view-corpus">
+          <header class="greeting">
+            <h1><em>dev</em> corpus</h1>
+          </header>
+
+          <!-- Import banner — shown until corpus is ingested -->
+          <div class="import-banner" id="import-banner">
+            <div class="import-banner-inner">
+              <div class="import-title">corpus not yet ingested</div>
+              <p class="import-desc">
+                The 500-record corpus is separate from Hey Kivi's live memory by default.
+                Ingesting it loads all dictation records as searchable takes, seeds tone and glossary memory
+                from confirmed corrections, and replays Hey Kivi decisions — so the full pipeline runs
+                against real persisted state, not a prepared sequence.
+              </p>
+              <div class="import-stats-row" id="import-stats-row" style="display:none">
+                <span class="stat-pill" id="imp-takes">— takes</span>
+                <span class="stat-pill" id="imp-mem">— memory items</span>
+                <span class="stat-pill" id="imp-dec">— decisions</span>
+                <span class="stat-pill" id="imp-cand">— candidates</span>
+              </div>
+              <div class="import-actions">
+                <button class="btn" id="import-btn" type="button">ingest corpus → live memory</button>
+                <button class="btn ghost" id="reset-btn" type="button" style="display:none">reset to blank</button>
+              </div>
+              <div class="import-progress" id="import-progress" style="display:none">
+                <div class="import-bar-track"><div class="import-bar-fill" id="import-bar-fill"></div></div>
+                <p class="import-progress-label" id="import-progress-label">loading…</p>
+              </div>
+            </div>
+          </div>
+
+          <p class="corpus-note" style="margin-top:16px">500 synthetic dictation records — raw ASR alongside LLM-formatted output, memory provenance, latency, and cost. Use the import button above to connect these records to the live Hey Kivi pipeline.</p>
+          <div class="corpus-toolbar">
+            <input id="corpus-search" type="search" placeholder="search corpus…" />
+            <select id="corpus-lang" class="pills" style="background:var(--panel);border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:8px 10px;"></select>
+          </div>
+          <p class="subtle" id="corpus-count"></p>
+          <ul class="corpus-list" id="corpus-list"></ul>
+        </div>
+
+        <div class="view hidden" id="view-history">
+          <header class="greeting">
+            <h1><em>chat</em> history</h1>
+          </header>
+          <div class="toolbar">
+            <input id="search" type="search" placeholder="search takes, tags, words…" />
+            <label class="chip"><input type="checkbox" id="only-pinned" /> pinned</label>
+            <label class="chip"><input type="checkbox" id="only-fav" /> favorites</label>
+          </div>
+          <form class="composer" id="history-form">
+            <textarea id="history-input" rows="2" placeholder="write a take to keep in history…"></textarea>
+            <div class="composer-row">
+              <input id="history-tags" type="text" placeholder="tags: note, idea" />
+              <button type="submit" class="btn">keep</button>
+            </div>
+          </form>
+          <ul class="take-list" id="history-list"></ul>
+        </div>
+
+        <div class="view hidden" id="view-done">
+          <header class="greeting">
+            <h1><em>completed</em> tasks</h1>
+          </header>
+          <ul class="task-list" id="done-list"></ul>
+        </div>
+
+        <div class="view hidden" id="view-doing">
+          <header class="greeting">
+            <h1><em>ongoing</em> tasks</h1>
+          </header>
+          <form class="composer" id="task-form">
+            <input id="task-input" type="text" placeholder="add a task…" />
+            <div class="composer-row">
+              <span></span>
+              <button type="submit" class="btn">keep</button>
+            </div>
+          </form>
+          <ul class="task-list" id="doing-list"></ul>
+        </div>
+
+        <div class="view hidden" id="view-shortcuts">
+          <header class="greeting">
+            <h1><em>short</em> cuts</h1>
+          </header>
+          <ul class="shortcut-list">
+            <li><kbd>Ctrl</kbd> + <kbd>Win</kbd> <span>start / stop dictate</span></li>
+            <li><kbd>Ctrl</kbd> + <kbd>K</kbd> <span>same as dictate (if Win is blocked)</span></li>
+            <li><kbd>/</kbd> <span>focus search in chat history</span></li>
+            <li><kbd>Esc</kbd> <span>stop listening / clear search</span></li>
+            <li><kbd>1</kbd>–<kbd>8</kbd> <span>home, dictate, hey kivi, history, completed, ongoing, shortcuts, styles</span></li>
+            <li><kbd>9</kbd> <span>memory — inspect everything Kivi has learned</span></li>
+            <li><kbd>0</kbd> <span>dev corpus — 500 synthetic records used to build this</span></li>
+          </ul>
+        </div>
+
+        <div class="view hidden" id="view-styles">
+          <header class="greeting">
+            <h1><em>styles</em></h1>
+          </header>
+          <fieldset>
+            <legend>hours</legend>
+            <div class="pills" id="theme-pills">
+              <button type="button" data-theme="auto">follow the clock</button>
+              <button type="button" data-theme="night">night owl</button>
+              <button type="button" data-theme="day">daylight</button>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>scene card</legend>
+            <div class="pills" id="scene-pills">
+              <button type="button" data-scene="bridge">lantern bridge</button>
+              <button type="button" data-scene="grove">moon grove</button>
+              <button type="button" data-scene="rain">rain window</button>
+              <button type="button" data-scene="meadow">morning meadow</button>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>take type</legend>
+            <div class="pills" id="type-pills">
+              <button type="button" data-type="serif">editorial</button>
+              <button type="button" data-type="sans">plain</button>
+            </div>
+          </fieldset>
+        </div>
+      </section>
+
+      <aside class="scene-panel">
+        <div class="flight">
+          <div class="flight-num" id="word-flight">0</div>
+          <div class="flight-label">words took flight today</div>
+          <div class="flight-from">from kivi.local</div>
+        </div>
+        <canvas id="scene" width="220" height="320" aria-label="pixel scene"></canvas>
+        <p class="scene-caption" id="scene-caption">hover the lanterns · click the kiwi</p>
+      </aside>
+    </div>
+    <script src="js/scenes.js"></script>
+    <script src="js/bird.js"></script>
+    <script src="js/kivi-engine.js"></script>
+    <script src="js/corpus-import.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
